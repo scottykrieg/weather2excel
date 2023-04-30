@@ -6,18 +6,20 @@ const WeatherData = ({ data }) => {
     <div className={styles.weatherdata}>
       <table>
         <thead>
-          <tr>
-            <th>Date/Time</th>
-            <th>Temperature (°C)</th>
-            <th>Precipitation (mm)</th>
-            <th>Wind Speed (m/s)</th>
-            <th>Wind Gusts (m/s)</th>
+          <tr className={styles.header}>
+            <th>Date (YYYY-MM-DD)</th>
+            <th>Time (24:00)</th>
+            <th>Temperature (°F)</th>
+            <th>Precipitation (in)</th>
+            <th>Wind Speed (mph)</th>
+            <th>Wind Gusts (mph)</th>
           </tr>
         </thead>
         <tbody>
           {data.map((item) => (
             <tr key={item.date}>
-              <td>{item.date}</td>
+              <td>{item.date.split(",")[0]}</td>
+              <td>{item.time}</td>
               <td>{item.temperature}</td>
               <td>{item.precipitation}</td>
               <td>{item.windSpeed}</td>

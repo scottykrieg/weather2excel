@@ -1,0 +1,37 @@
+[debug] [2023-04-30T21:56:44.720Z] ----------------------------------------------------------------------
+[debug] [2023-04-30T21:56:44.722Z] Command:       C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2023-04-30T21:56:44.723Z] CLI Version:   11.28.0
+[debug] [2023-04-30T21:56:44.723Z] Platform:      win32
+[debug] [2023-04-30T21:56:44.723Z] Node Version:  v20.0.0
+[debug] [2023-04-30T21:56:44.723Z] Time:          Sun Apr 30 2023 17:56:44 GMT-0400 (Eastern Daylight Time)
+[debug] [2023-04-30T21:56:44.723Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-04-30T21:56:44.908Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-04-30T21:56:44.908Z] > authorizing via signed-in user (scotty.krieg@gmail.com)
+[debug] [2023-04-30T21:56:44.908Z] [iam] checking project weather2excel for permissions ["firebase.projects.get"]
+[debug] [2023-04-30T21:56:44.910Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/weather2excel:testIamPermissions [none]
+[debug] [2023-04-30T21:56:44.911Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/weather2excel:testIamPermissions x-goog-quota-user=projects/weather2excel
+[debug] [2023-04-30T21:56:44.911Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/weather2excel:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-04-30T21:56:45.052Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/weather2excel:testIamPermissions 200
+[debug] [2023-04-30T21:56:45.052Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/weather2excel:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-04-30T21:56:45.053Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/weather2excel [none]
+[debug] [2023-04-30T21:56:45.229Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/weather2excel 200
+[debug] [2023-04-30T21:56:45.229Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/weather2excel {"projectId":"weather2excel","projectNumber":"1027905566445","displayName":"weather2excel","name":"projects/weather2excel","resources":{"hostingSite":"weather2excel"},"state":"ACTIVE","etag":"1_c893235c-b1ee-4882-8c22-64d91f8c5523"}
+[info] 
+[info] === Serving from 'C:\Users\scott\projects\weather2excel'...
+[info] 
+[debug] [2023-04-30T21:56:45.236Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/weather2excel [none]
+[debug] [2023-04-30T21:56:45.383Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/weather2excel 200
+[debug] [2023-04-30T21:56:45.383Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/weather2excel {"projectId":"weather2excel","projectNumber":"1027905566445","displayName":"weather2excel","name":"projects/weather2excel","resources":{"hostingSite":"weather2excel"},"state":"ACTIVE","etag":"1_c893235c-b1ee-4882-8c22-64d91f8c5523"}
+[debug] [2023-04-30T21:56:52.816Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/weather2excel/sites pageToken=&pageSize=10
+[debug] [2023-04-30T21:56:53.154Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/weather2excel/sites 200
+[debug] [2023-04-30T21:56:53.154Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/weather2excel/sites {"sites":[{"name":"projects/weather2excel/sites/weather2excel","defaultUrl":"https://weather2excel.web.app","appId":"1:1027905566445:web:f355628f112a547fafbee4","type":"DEFAULT_SITE"}]}
+[debug] [2023-04-30T21:56:53.155Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:1027905566445:web:f355628f112a547fafbee4/config [none]
+[debug] [2023-04-30T21:56:53.666Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:1027905566445:web:f355628f112a547fafbee4/config 200
+[debug] [2023-04-30T21:56:53.666Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:1027905566445:web:f355628f112a547fafbee4/config {"projectId":"weather2excel","appId":"1:1027905566445:web:f355628f112a547fafbee4","storageBucket":"weather2excel.appspot.com","apiKey":"AIzaSyBIJBgNy8G80IBSlhoWQNQAnI4UcXf0D6A","authDomain":"weather2excel.firebaseapp.com","messagingSenderId":"1027905566445","measurementId":"G-EQ07HWFXG0"}
+[debug] [2023-04-30T21:57:08.489Z] TypeError: next is not a function
+    at getDevModeHandle (C:\Users\scott\AppData\Roaming\nvm\v20.0.0\node_modules\firebase-tools\lib\frameworks\next\index.js:279:21)
+    at async prepareFrameworks (C:\Users\scott\AppData\Roaming\nvm\v20.0.0\node_modules\firebase-tools\lib\frameworks\index.js:269:14)
+    at async serve (C:\Users\scott\AppData\Roaming\nvm\v20.0.0\node_modules\firebase-tools\lib\serve\index.js:21:9)
+[error] 
+[error] Error: An unexpected error has occurred.
