@@ -35,3 +35,9 @@ yarn-error.log*
 next-env.d.ts
 
 *firebase.js
+
+.firebase\*
+*.firebase
+
+*.next
+.firebase/weather2excel/functions/.env
