@@ -7,11 +7,14 @@ import { Workbook } from "exceljs";
 
 const IndexPage = () => {
   const [data, setData] = useState([]);
+  const [cityName, setCityName] = useState("");
+  const [countryName, setCountryName] = useState("");
+  const [zipCode, setZipCode] = useState("");
 
-  const handleSubmit = async (city) => {
+  const handleSubmit = async (zipCode) => {
     try {
       const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY}&units=metric`
+        `https://api.openweathermap.org/data/2.5/forecast?zip=${zipCode}&appid=${process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY}&units=metric`
       );
       const weatherData = response.data.list.map((item) => ({
         date: moment(item.dt_txt).format("YYYY-MM-DD HH:mm:ss"),
@@ -20,11 +23,21 @@ const IndexPage = () => {
         windSpeed: item.wind.speed,
         windGust: item.wind.gust || 0,
       }));
-      console.log(response.data.list);
+      weatherData.unshift({
+        date: "",
+        temperature: "",
+        precipitation: "",
+        windSpeed: "",
+        windGust: "",
+        city: `${response.data.city.name}, ${response.data.city.country} - ${zipCode}`,
+      });
       setData(weatherData);
+      setCityName(response.data.city.name);
+      setCountryName(response.data.city.country);
       const workbook = new Workbook();
       const worksheet = workbook.addWorksheet("Weather Data");
       worksheet.columns = [
+        { header: "", key: "city", width: 60 },
         { header: "Date/Time", key: "date", width: 18 },
         { header: "Temperature (°C)", key: "temperature", width: 18 },
         { header: "Precipitation (mm)", key: "precipitation", width: 18 },
@@ -32,15 +45,15 @@ const IndexPage = () => {
         { header: "Wind Gusts (m/s)", key: "windGust", width: 18 },
       ];
       worksheet.addRows(weatherData);
+      worksheet.getRow(1).font = { bold: true };
       const buffer = await workbook.xlsx.writeBuffer();
       const blob = new Blob([buffer], {
         type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
       });
-      const currentDate = moment().format("YYYY-MM-DD");
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.download = `${city}-Weather-Data-${currentDate}.xlsx`;
+      link.download = `${zipCode}-${response.data.city.name}-Weather-Data.xlsx`;
       link.click();
     } catch (error) {
       console.error(error);
@@ -50,7 +63,14 @@ const IndexPage = () => {
   return (
     <>
       <WeatherForm onSubmit={handleSubmit} />
-      {data.length > 0 && <WeatherData data={data} />}
+      {data.length > 0 && (
+        <>
+          <h1>
+            {cityName}, {countryName}
+          </h1>
+          <WeatherData data={data} />
+        </>
+      )}
     </>
   );
 };
