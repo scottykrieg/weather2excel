@@ -20,6 +20,7 @@ const IndexPage = () => {
         windSpeed: item.wind.speed,
         windGust: item.wind.gust || 0,
       }));
+      console.log(response.data.list);
       setData(weatherData);
       const workbook = new Workbook();
       const worksheet = workbook.addWorksheet("Weather Data");
@@ -35,10 +36,11 @@ const IndexPage = () => {
       const blob = new Blob([buffer], {
         type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
       });
+      const currentDate = moment().format("YYYY-MM-DD");
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.download = `${city} Weather Data.xlsx`;
+      link.download = `${city}-Weather-Data-${currentDate}.xlsx`;
       link.click();
     } catch (error) {
       console.error(error);
