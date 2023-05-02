@@ -26,7 +26,7 @@ const WeatherForm = ({ onSubmit }) => {
           Download Excel File / Display Weather Data.{" "}
         </button>
       </form>
-      <h3>Enter Zip Code above, data will appear below.</h3>
+      <h3>Enter Zip Code above, data for next 5 days will appear below.</h3>
     </div>
   );
 };

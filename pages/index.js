@@ -4,6 +4,7 @@ import moment from "moment";
 import WeatherForm from "../components/WeatherForm";
 import WeatherData from "../components/WeatherData";
 import { Workbook } from "exceljs";
+import Footer from "@/components/Footer";
 
 const IndexPage = () => {
   const [data, setData] = useState([]);
@@ -82,8 +83,10 @@ const IndexPage = () => {
       });
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
+      const currentDate = moment().format("YYYY-MM-DD");
+
       link.href = url;
-      link.download = `${zipCode}-${response.data.city.name}-Weather-Data.xlsx`;
+      link.download = `${zipCode}-${response.data.city.name}-Weather-Data-${currentDate}.xlsx`;
       link.click();
     } catch (error) {
       console.error(error);
@@ -102,6 +105,7 @@ const IndexPage = () => {
           <WeatherData data={data} />
         </>
       )}
+      <Footer />
     </>
   );
 };
