@@ -5,11 +5,19 @@ import WeatherForm from "../components/WeatherForm";
 import WeatherData from "../components/WeatherData";
 import { Workbook } from "exceljs";
 import Footer from "@/components/Footer";
+import ModeToggle from "@/components/ModeToggle";
 
 const IndexPage = () => {
   const [data, setData] = useState([]);
   const [cityName, setCityName] = useState("");
   const [countryName, setCountryName] = useState("");
+  const [mode, setMode] = useState("light");
+
+  const handleModeToggle = () => {
+    const newMode = mode === "light" ? "dark" : "light";
+    setMode(newMode);
+    document.documentElement.setAttribute("data-theme", newMode);
+  };
 
   const handleSubmit = async (zipCode) => {
     try {

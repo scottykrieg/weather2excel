@@ -13,13 +13,13 @@ export default function Footer() {
       <div className={styles.footer}>
         <h3>Created by Scotty Krieg</h3>
         <h4>Technologies used:</h4>
-      </div>
-      <div className={styles.iconRow}>
-        <SiMicrosoftexcel />
-        <SiNextdotjs />
-        <SiFirebase />
-        <SiJavascript />
-        <SiSass />
+        <div className={styles.iconRow}>
+          <SiMicrosoftexcel />
+          <SiNextdotjs />
+          <SiFirebase />
+          <SiJavascript />
+          <SiSass />{" "}
+        </div>
       </div>
     </>
   );

@@ -1,12 +1,32 @@
+import { useState } from "react";
+import Head from "next/head";
 import "@/styles/index.sass";
-import { IBM_Plex_Sans } from "next/font/google";
+import ModeToggle from "@/components/ModeToggle";
 
-const ibm = IBM_Plex_Sans({ weight: "400", subsets: ["latin"] });
+function MyApp({ Component, pageProps }) {
+  const [mode, setMode] = useState("light");
 
-export default function App({ Component, pageProps }) {
+  const handleModeToggle = () => {
+    const newMode = mode === "light" ? "dark" : "light";
+    setMode(newMode);
+    document.documentElement.setAttribute("data-theme", newMode);
+  };
+
   return (
-    <main className={ibm.className}>
-      <Component {...pageProps} />
-    </main>
+    <>
+      <Head>
+        <title>My App</title>
+      </Head>
+      <body
+        className={`font-ibm-plex-sans ${mode === "light" ? "light" : "dark"}`}
+      >
+        <ModeToggle mode={mode} handleModeToggle={handleModeToggle} />
+        <div>
+          <Component {...pageProps} />
+        </div>
+      </body>
+    </>
   );
 }
+
+export default MyApp;
