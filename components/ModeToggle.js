@@ -1,10 +1,13 @@
 import PropTypes from "prop-types";
+import styles from "@/styles/toggle.module.sass";
 
 function ModeToggle({ mode, handleModeToggle }) {
   return (
-    <button className="mode-toggle" onClick={handleModeToggle}>
-      {mode === "light" ? "Dark Mode" : "Light Mode"}
-    </button>
+    <div className={styles.button}>
+      <button className="mode-toggle" onClick={handleModeToggle}>
+        {mode === "light" ? "Dark Mode" : "Light Mode"}
+      </button>
+    </div>
   );
 }
 
